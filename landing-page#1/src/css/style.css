@@ -30,10 +30,10 @@ h1 {
   margin-top: 53px;
 }
 .title {
-  font-family: "Roboto - Black";
-  font-weight: 900;
+  font-family: "Roboto-Black";
+  font-weight: 400;
   font-size: 41px;
-  line-height: 41px;
+  line-height: 24px;
   color: #f9bf3b;
   text-align: center;
   text-transform: uppercase;
@@ -43,20 +43,108 @@ h2.title {
 }
 .simple .title_big {
   font-family: "Roboto-Black";
-  font-style: normal;
-  font-weight: 900;
+  font-weight: 400;
   font-size: 80px;
   color: #ffffff;
   text-align: center;
   margin-top: 21px;
   text-transform: uppercase;
 }
-.promo_text {
-  font-family: "Roboto";
-  font-style: normal;
+.promo .promo_text {
+  font-family: "Roboto-Light";
   font-weight: 300;
   font-size: 21px;
   line-height: 28px;
   text-align: center;
   color: #ffffff;
+  padding: 0 13px;
+  margin-top: 23px;
+}
+.promo .promo_text span {
+  font-family: "Roboto-Bold";
+  font-weight: 700;
+  color: #f9bf3b;
+}
+.promo .promo_btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 73px;
+  width: 313px;
+  height: 72px;
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.18);
+  border: 4px solid rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+  background-image: linear-gradient(to top, #2798b9 0%, #3ab6da 100%);
+  color: #ffffff;
+  font-family: "Roboto Condensed";
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 24px;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+.more {
+  margin-top: 73px;
+}
+.more .more_text {
+  color: #ffffff;
+  font-family: "Roboto-Thin";
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+.more .more_img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 13px;
+}
+.waiting {
+  height: 604px;
+  background-color: #efefef;
+  padding: 85px 0 75px 0;
+}
+.waiting .waiting_header {
+  color: #252525;
+  font-family: "Robot-Regular";
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+.waiting .waiting_divider {
+  width: 217px;
+  height: 4px;
+  background-color: #f9bf3b;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+.waiting .waiting_subheader {
+  color: #4a4a4a;
+  font-family: "Roboto-Regular";
+  font-size: 23px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 17px;
+}
+.waiting .waiting_wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 45px;
+}
+.waiting .waiting_wrapper .waiting_item {
+  width: 339px;
+}
+.waiting .waiting_wrapper .waiting_item .waiting_img {
+  width: 100%;
+}
+.waiting .waiting_wrapper .waiting_item .waiting_descr {
+  color: #4a4a4a;
+  text-align: center;
+  font-family: "Roboto-Light";
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 21px;
+  margin-top: 33px;
 }

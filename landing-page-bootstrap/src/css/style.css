@@ -3,14 +3,16 @@
 }
 
 header {
-  position: fixed;
-  width: 100%;
+  position: relative;
+  height: 50px;
 }
 
 nav {
+  position: fixed;
+  width: 100%;
   height: 50px;
   background: #212121;
-  top: 0;
+  z-index: 2;
 }
 
 .menu {
@@ -34,6 +36,8 @@ nav {
 }
 
 .subheader {
+  position: absolute;
+  top: 50px;
   width: 100%;
   height: 84px;
   background-color: rgba(0, 0, 0, 0.6);
@@ -90,7 +94,7 @@ nav {
 .promo {
   min-height: 800px;
   background: url("../img/uber_bg.jpg") center center/cover no-repeat;
-  padding: 207px 0 135px 0;
+  padding: 150px 0 135px 0;
 }
 
 .promo .promo_header {
@@ -136,4 +140,69 @@ nav {
   color: #ffffff;
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.21);
   margin: 118px auto 0 auto;
+}
+
+.advantages {
+  padding: 71px 0 65px 0;
+}
+
+.label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 112px;
+  height: 24px;
+  background: #000000;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin: 0 auto;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 38px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #222222;
+  margin-bottom: 0;
+  margin-top: 38px;
+}
+
+.advantages .advantages_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 480px;
+  margin-top: 35px;
+}
+
+.advantages .advantages_block .advantages_round {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 113px;
+  height: 113px;
+  border-radius: 100%;
+  background-color: #1eacc7;
+  margin-right: 26px;
+}
+
+.advantages .advantages_block .advantages_text {
+  width: 343px;
+}
+.advantages .advantages_block .advantages_text .advantages_title {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  color: #1eacc7;
+}
+
+.advantages .advantages_block .advantages_text .advantages_descr {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 21px;
+  color: #202020;
 }

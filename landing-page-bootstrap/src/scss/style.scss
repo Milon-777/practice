@@ -37,6 +37,10 @@ nav {
     font-size: 15px;
     color: #ffffff;
     text-decoration: none;
+    &:hover {
+      color: $main-color;
+      text-decoration: underline;
+    }
   }
 
   &_item {
@@ -84,6 +88,10 @@ nav {
     line-height: 12px;
     text-decoration: none;
     margin-top: 8px;
+    &:hover {
+      color: $main-color;
+      text-decoration: underline;
+    }
   }
 
   &_btn {
@@ -410,6 +418,131 @@ nav {
           background: url("../icons/check_mark_red.svg") center center/cover
             no-repeat;
         }
+      }
+    }
+  }
+}
+
+.cities {
+  position: relative;
+  padding: 49px 0 52px 0;
+  min-height: 717px;
+  background: url("../img/world_bg.jpg") center center/cover no-repeat;
+  &_link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 49px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 68px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1fbad6;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+footer {
+  padding: 14px 23px 39px 23px;
+  .footer {
+    &_divider {
+      width: 299px;
+      height: 4px;
+      background-color: #1fbad6;
+      margin: 0 auto;
+    }
+    &_wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-top: 32px;
+    }
+    &_wrapper > div {
+      width: 33%;
+      &:nth-child(3) {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    &_social {
+      width: 160px;
+      display: flex;
+      justify-content: space-between;
+      &_item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 4px;
+        width: 32px;
+        height: 32px;
+        background-color: #070716;
+        text-decoration: none;
+        border-radius: 100%;
+        span {
+          color: white;
+          &:hover {
+            color: $main-color;
+          }
+        }
+      }
+    }
+    &_links {
+      width: 390px;
+      margin: 0 auto;
+      &_main {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        a {
+          color: #070716;
+          font-size: 15px;
+          font-weight: 300;
+          text-transform: uppercase;
+          text-decoration: none;
+          &:hover {
+            color: $main-color;
+            text-decoration: underline;
+          }
+        }
+      }
+      &_sub {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        a {
+          color: #999999;
+          font-size: 11px;
+          font-weight: 300;
+          text-transform: uppercase;
+          text-decoration: none;
+          &:hover {
+            color: $main-color;
+            text-decoration: underline;
+          }
+        }
+      }
+      &_lang {
+        display: block;
+        margin: 0 auto;
+        color: #1fbad6;
+        font-size: 11px;
+        font-weight: 400;
+        margin-top: 19px;
+        text-transform: uppercase;
+        text-align: center;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    &_mobile {
+      img {
+        height: 26px;
       }
     }
   }

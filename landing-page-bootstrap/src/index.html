@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Cайт візитка з використанням bootstrap" />
     <meta name="author" content="Стрижак Роман" />
-    <title>Uber777</title>
+    <title>Uber</title>
+    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css" />
     <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="css/fonts.min.css" />
@@ -21,27 +22,32 @@
               <a href="#" class="menu_link">Головна</a>
             </li>
             <li class="menu_item">
-              <a href="#" class="menu_link">Зі своїм автомобілем</a>
+              <a href="#terms" class="menu_link">Зі своїм автомобілем</a>
             </li>
             <li class="menu_item">
-              <a href="#" class="menu_link">На автомобілі компанії</a>
+              <a href="#terms" class="menu_link">На автомобілі компанії</a>
             </li>
             <li class="menu_item">
-              <a href="#" class="menu_link">Вимоги</a>
+              <a href="#terms" class="menu_link">Вимоги</a>
             </li>
             <li class="menu_item">
-              <a href="#" class="menu_link">Контакти</a>
+              <a href="#contacts" class="menu_link">Контакти</a>
             </li>
             <li class="menu_item">
               <a href="#" class="menu_link">Залишити заявку</a>
             </li>
           </ul>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </nav>
       <div class="subheader">
         <div class="container">
           <div class="row">
-            <div class="col-md-4 offset-md-1">
+            <div class="col-6 col-md-4 offset-md-1">
               <a href="#" class="subheader_logo">
                 <img src="icons/uber_logo.png" alt="Логотип" />
               </a>
@@ -49,13 +55,18 @@
                 Офіційний партнер Uber в Україні
               </div>
             </div>
-            <div class="col-md-2 offset-md-2">
+            <div
+              class="xs-hidden col-6 col-md-3 offset-md-1 col-xl-2 offset-xl-2"
+            >
               <div class="subheader_call">Телефонуйте нам щодня</div>
-              <a href="tel:+381234567891" class="subheader_phone"
-                >+38 123 456 78 91</a
-              >
+              <a href="tel:+381234567891" class="subheader_phone">
+                +38 123 456 78 91
+              </a>
             </div>
-            <div class="col-md-2">
+            <div class="col-6 col-md-3">
+              <a href="tel:+381234567891" class="xs-visible subheader_phone">
+                +38 123 456 78 91
+              </a>
               <button class="subheader_btn">Замовити дзвінок</button>
             </div>
           </div>
@@ -66,7 +77,7 @@
     <section class="promo">
       <div class="container">
         <div class="row">
-          <div class="col-md-10 offset-md-1">
+          <div class="col-md-12 offset-md-0 col-lg-10 offset-lg-1">
             <h1 class="promo_header">Компанія Uber Partners!</h1>
             <h2 class="promo_subheader">Запрошуємо водіїв! На своєму авто!</h2>
             <div class="promo_descr">
@@ -295,7 +306,9 @@
           </div>
           <div class="col-md-4">
             <div class="mobile_item mobile_item_6">
-              <div class="mobile_item_subtitle">Розділити вартість поїздки</div>
+              <div class="mobile_item_subtitle">
+                Розділення вартості поїздки
+              </div>
               <div class="mobile_item_plus"></div>
             </div>
           </div>
@@ -318,7 +331,7 @@
       </div>
     </section>
 
-    <section class="terms">
+    <section class="terms" id="terms">
       <div class="container">
         <div class="label">Можливості</div>
         <div class="title">Умови та вимоги</div>
@@ -357,7 +370,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="terms_block terms_block_nmb warning">
+            <div class="terms_block terms_block_nmb warning" id="requirements">
               <div class="terms_title">ВИМОГИ</div>
               <ul class="terms_list">
                 <li>Наявність автомобіля без реклами</li>
@@ -398,7 +411,7 @@
       </div>
     </section>
 
-    <footer>
+    <footer id="contacts">
       <div class="footer_divider"></div>
       <div class="footer_wrapper">
         <div>
@@ -438,16 +451,24 @@
 
         <div>
           <div class="footer_mobile">
-            <a href="#app_store"><img src="img/app_store.svg" alt="" /></a>
+            <a href="#app_store"
+              ><img src="img/app_store.svg" alt="Посилання на App store"
+            /></a>
             <a href="#google_play"
-              ><img src="img/google_play_store.svg" alt=""
+              ><img
+                src="img/google_play_store.svg"
+                alt="Посилання на Google Play store"
             /></a>
             <a href="#microsoft_store"
-              ><img src="img/microsoft_store.svg" alt=""
+              ><img
+                src="img/microsoft_store.svg"
+                alt="Посилання на Microsoft store"
             /></a>
           </div>
         </div>
       </div>
     </footer>
+
+    <script src="js/script.js"></script>
   </body>
 </html>

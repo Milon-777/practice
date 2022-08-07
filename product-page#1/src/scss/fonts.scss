@@ -1,0 +1,121 @@
+@import "base/variables";
+
+@font-face {
+  font-family: "#{$museo-font-family}";
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Regular.eot");
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Regular.woff2")
+      format("woff2"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Regular.woff") format("woff"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Regular.ttf")
+      format("truetype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Regular.svg##{$museo-font-family}-Regular")
+      format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "#{$museo-font-family}";
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Medium.eot");
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Medium.woff2")
+      format("woff2"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Medium.woff") format("woff"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Medium.ttf")
+      format("truetype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Medium.svg##{$museo-font-family}-Medium")
+      format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "#{$museo-font-family}";
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Bold.eot");
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Bold.woff2") format("woff2"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Bold.woff") format("woff"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Bold.ttf") format("truetype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Bold.svg##{$museo-font-family}-Bold")
+      format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "#{$museo-font-family}";
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Light.eot");
+  src: url("#{$museo-font-path}/#{$museo-font-family}-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Light.woff2") format("woff2"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Light.woff") format("woff"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Light.ttf")
+      format("truetype"),
+    url("#{$museo-font-path}/#{$museo-font-family}-Light.svg##{$museo-font-family}-Light")
+      format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "#{$icon-font-family}";
+  src: url("#{$icon-font-path}/#{$icon-font-family}.eot?g51ghb");
+  src: url("#{$icon-font-path}/#{$icon-font-family}.eot?g51ghb#iefix")
+      format("embedded-opentype"),
+    url("#{$icon-font-path}/#{$icon-font-family}.ttf?g51ghb") format("truetype"),
+    url("#{$icon-font-path}/#{$icon-font-family}.woff?g51ghb") format("woff"),
+    url("#{$icon-font-path}/#{$icon-font-family}.woff2?g51ghb") format("woff2"),
+    url("#{$icon-font-path}/#{$icon-font-family}.svg?g51ghb##{$icon-font-family}")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "#{$icon-font-family}" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-facebook {
+  &:before {
+    content: $icon-facebook;
+  }
+}
+.icon-instagram {
+  &:before {
+    content: $icon-instagram;
+  }
+}
+.icon-twitter {
+  &:before {
+    content: $icon-twitter;
+  }
+}
+.icon-linkedin {
+  &:before {
+    content: $icon-linkedin;
+  }
+}
+.icon-pinterest {
+  &:before {
+    content: $icon-pinterest;
+  }
+}

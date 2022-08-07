@@ -1,0 +1,17 @@
+@import "base/variables";
+* {
+  font-family: $museo-font-family, sans-serif;
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+.container {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+@import "blocks/promo";
+@import "blocks/header";
+@import "blocks/buttons";
+@import "blocks/advantages";

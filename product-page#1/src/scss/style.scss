@@ -4,6 +4,9 @@
   a {
     text-decoration: none;
     color: #ffffff;
+    &:hover {
+      color: #ffffff;
+    }
   }
 }
 .container {
@@ -20,5 +23,8 @@
 @import "blocks/forms";
 @import "blocks/carousel";
 @import "blocks/catalog";
+@import "blocks/reviews";
+@import "blocks/footer";
+@import "blocks/modal";
 
 @import "media";

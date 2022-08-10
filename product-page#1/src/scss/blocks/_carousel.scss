@@ -1,0 +1,38 @@
+.carousel {
+  padding: 31px 0;
+  &__inner {
+    position: relative;
+    width: 750px;
+  }
+  .swiper {
+    &-wrapper {
+      padding: 50px;
+    }
+    &-slide {
+      img {
+        width: 650px;
+        height: 450px;
+      }
+    }
+    &-button {
+      &-prev,
+      &-next {
+        width: 30px;
+        height: 50px;
+      }
+      &-prev::after {
+        content: "";
+      }
+      &-next::after {
+        content: "";
+      }
+    }
+    &-pagination-bullet {
+      width: 10px;
+      height: 10px;
+    }
+    &-pagination-bullet-active {
+      background-color: $main-color;
+    }
+  }
+}

@@ -7,4 +7,16 @@
     font-size: 20px;
     color: #ffffff;
   }
+  .is-invalid {
+    border: 3px solid red;
+  }
+  .just-validate {
+    &-success-field {
+      border: 3px solid green;
+    }
+    &-error-label {
+      text-align: center;
+      margin-top: 3px;
+    }
+  }
 }

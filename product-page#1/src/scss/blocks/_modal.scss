@@ -40,6 +40,18 @@
   &_mini {
     min-height: 140px;
   }
+  .is-invalid {
+    border: 1px solid red;
+  }
+  .just-validate {
+    &-success-field {
+      border: 1px solid green;
+    }
+    &-error-label {
+      text-align: center;
+      margin-top: 3px;
+    }
+  }
 }
 #consultation,
 #order,

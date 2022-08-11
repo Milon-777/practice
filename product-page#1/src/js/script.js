@@ -69,8 +69,8 @@ tabWrapper.addEventListener("click", (e) => {
 const showBtns = document.querySelectorAll(".catalog-item__link");
 const hideBtns = document.querySelectorAll(".catalog-item__back");
 
-showBtns.forEach(function (elem, i) {
-  elem.addEventListener("click", function (e) {
+showBtns.forEach((elem, i) => {
+  elem.addEventListener("click", (e) => {
     e.preventDefault();
     document
       .querySelectorAll(".catalog-item__content")
@@ -81,8 +81,8 @@ showBtns.forEach(function (elem, i) {
   });
 });
 
-hideBtns.forEach(function (elem, i) {
-  elem.addEventListener("click", function (e) {
+hideBtns.forEach((elem, i) => {
+  elem.addEventListener("click", (e) => {
     e.preventDefault();
     document
       .querySelectorAll(".catalog-item__content")
@@ -94,58 +94,110 @@ hideBtns.forEach(function (elem, i) {
 });
 
 //Modal windows
+const popup = document.querySelector(".popup-window");
 const consulModal = document.getElementById("consultation");
 const orderModal = document.getElementById("order");
 const thanksModal = document.getElementById("thanks");
-const popup = document.querySelector(".popup-window");
-const consultBtns = document.querySelectorAll("[data-modal=consultation]");
-const orderBtns = document.querySelectorAll("[data-modal=order]");
-const thanksBtns = document.querySelectorAll("[data-modal=thanks]");
+const consulBtns = document.querySelectorAll("[data-modal='consultation']");
+const consulFormBtn = document.querySelector(".button_submit");
+const orderBtns = document.querySelectorAll("[data-modal='order']");
+const thanksBtns = document.querySelectorAll("[data-modal='thanks']");
 const closeBtns = document.querySelectorAll(".modal__close");
+let products = document.querySelectorAll(".catalog-item__subtitle");
+let order = document.querySelector("#order .modal__descr");
 
-// console.log(consultBtns);
+function hideModals() {
+  popup.style.display = "none";
+  consulModal.style.display = "none";
+  orderModal.style.display = "none";
+  thanksModal.style.display = "none";
+}
 
-// consultBtns.forEach(function (elem) {
-//   elem.addEventListener("click", function (e) {
-//     consulModal.style.display = "block";
-//     popup.style.display = "block";
-//   });
-// });
-
-// orderBtns.forEach(function (elem) {
-//   elem.addEventListener("click", function (e) {
-//     orderModal.style.display = "block";
-//     popup.style.display = "block";
-//   });
-// });
-
-// thanksBtns.forEach(function (elem) {
-//   elem.addEventListener("click", function (e) {
-//     thanksModal.style.display = "block";
-//     popup.style.display = "block";
-//   });
-// });
+function showModal(modal) {
+  popup.style.display = "block";
+  modal.style.display = "block";
+}
 
 closeBtns.forEach(function (elem) {
-  elem.addEventListener("click", function (e) {
-    consulModal.style.display = "none";
-    orderModal.style.display = "none";
-    thanksModal.style.display = "none";
-    popup.style.display = "none";
+  elem.addEventListener("click", (e) => {
+    hideModals();
   });
 });
 
-const btns = document.querySelectorAll(".button");
-btns.forEach(function (elem) {
-  if (elem.getAttribute("data-modal") === "consultation") {
-    elem.addEventListener("click", function (e) {
-      consulModal.style.display = "block";
-      popup.style.display = "block";
-    });
-  } else if (elem.getAttribute("data-modal") === "order") {
-    elem.addEventListener("click", function (e) {
-      orderModal.style.display = "block";
-      popup.style.display = "block";
-    });
-  }
+consulBtns.forEach((elem) => {
+  elem.addEventListener("click", (e) => {
+    showModal(consulModal);
+    validateForm("#consultation");
+  });
 });
+
+consulFormBtn.addEventListener("click", (e) => {
+  validateForm("#consultation-form");
+});
+
+orderBtns.forEach((elem, i) => {
+  elem.addEventListener("click", (e) => {
+    order.textContent = products[i].textContent;
+    showModal(orderModal);
+    validateForm("#order");
+  });
+});
+
+thanksBtns.forEach((elem) => {
+  elem.addEventListener("click", (e) => {
+    // e.preventDefault();
+    // showModal(thanksModal);
+  });
+});
+
+//Validations
+function validateForm(form) {
+  const validation = new window.JustValidate(form, {
+    errorFieldCssClass: "is-invalid",
+    errorFieldStyle: {
+      border: "10px solid red",
+    },
+    errorLabelStyle: {
+      color: "red",
+    },
+  });
+
+  validation
+    .addField(".name", [
+      {
+        rule: "required",
+        errorMessage: "Введіть будь ласка ім'я!",
+      },
+      {
+        rule: "minLength",
+        value: 2,
+        errorMessage: "Занадто коротке ім'я",
+      },
+      {
+        rule: "maxLength",
+        value: 30,
+        errorMessage: "Занадто велике ім'я",
+      },
+    ])
+    .addField(".phone", [
+      {
+        rule: "required",
+        errorMessage: "Введіть будь ласка телефон!",
+      },
+      {
+        rule: "customRegexp",
+        value: /^\+380\d{3}\d{2}\d{2}\d{2}$/,
+        errorMessage: "Неправильний формат телефону!",
+      },
+    ])
+    .addField(".email", [
+      {
+        rule: "required",
+        errorMessage: "Введіть будь ласка пошту!",
+      },
+      {
+        rule: "email",
+        errorMessage: "Неправильний формат пошти!",
+      },
+    ]);
+}

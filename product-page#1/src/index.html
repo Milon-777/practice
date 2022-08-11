@@ -117,10 +117,10 @@
           Просто заповніть форму заявки<br />
           і ми передзвонимо вам протягом 10 хвилин
         </div>
-        <form class="feedback-form" action="#">
-          <input type="text" name="name" placeholder="Ваше ім'я" required />
-          <input type="tel" name="phone" placeholder="Ваш телефон" required />
-          <input type="email" name="email" placeholder="Ваша E-mail" required />
+        <form id="consultation-form" class="feedback-form" action="#">
+          <input class="name" type="text" name="name" placeholder="Ваше ім'я" />
+          <input class="phone" type="tel" name="phone" placeholder="Ваш телефон" />
+          <input class="email" type="email" name="email" placeholder="Ваша E-mail" />
           <button class="button button_submit">Замовити консультацію</button>
         </form>
       </div>
@@ -604,10 +604,10 @@
 				<div class="modal__subtitle">Просто заповніть форму заявки</div>
 				<div class="modal__descr">і ми передзвонимо вам протягом 10 хвилин</div>
 				<form class="feedback-form feedback-form_mt25" action="#">
-          <input type="text" name="name" placeholder="Ваше ім'я" required />
-          <input type="tel" name="phone" placeholder="Ваш телефон" required />
-          <input type="email" name="email" placeholder="Ваша E-mail" required />
-          <button class="button button_submit">Замовити консультацію</button>
+          <input class="name" type="text" name="name" placeholder="Ваше ім'я" />
+          <input class="phone" type="tel" name="phone" placeholder="Ваш телефон" />
+          <input class="email" type="email" name="email" placeholder="Ваша E-mail" />
+          <button class="button button_submit" data-modal="thanks">Замовити консультацію</button>
         </form>
 			</div>
 
@@ -616,10 +616,10 @@
 				<div class="modal__subtitle">Ваше замовлення:</div>
 				<div class="modal__descr">Пульсометр Polar FT1</div>
 				<form class="feedback-form feedback-form_mt25" action="#">
-          <input type="text" name="name" placeholder="Ваше ім'я" required />
-          <input type="tel" name="phone" placeholder="Ваш телефон" required />
-          <input type="email" name="email" placeholder="Ваша E-mail" required />
-          <button class="button button_submit">Купити</button>
+          <input class="name" type="text" name="name" placeholder="Ваше ім'я" />
+          <input class="phone" type="tel" name="phone" placeholder="Ваш телефон" />
+          <input class="email" type="email" name="email" placeholder="Ваша E-mail"/>
+          <button class="button button_submit" data-modal="thanks">Купити</button>
         </form>
 			</div>
 
@@ -631,6 +631,7 @@
 		</div>
 
     <script src="js/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

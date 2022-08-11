@@ -169,6 +169,11 @@ function validateForm(form) {
         errorMessage: "Введіть будь ласка ім'я!",
       },
       {
+        rule: "customRegexp",
+        value: /\D/,
+        errorMessage: "Ім'я не повинно містити цифри!",
+      },
+      {
         rule: "minLength",
         value: 2,
         errorMessage: "Занадто коротке ім'я",
@@ -184,11 +189,6 @@ function validateForm(form) {
         rule: "required",
         errorMessage: "Введіть будь ласка телефон!",
       },
-      {
-        rule: "customRegexp",
-        value: /^\+380\d{3}\d{2}\d{2}\d{2}$/,
-        errorMessage: "Неправильний формат телефону!",
-      },
     ])
     .addField(".email", [
       {
@@ -201,3 +201,13 @@ function validateForm(form) {
       },
     ]);
 }
+
+//Phone input mask
+const elements = document.querySelectorAll("input[class='phone']");
+let mask;
+const maskOptions = {
+  mask: "(000) 000-00-00",
+};
+elements.forEach((elem) => {
+  mask = IMask(elem, maskOptions);
+});

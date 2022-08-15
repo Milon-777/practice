@@ -1,3 +1,6 @@
+@import "libs/bootstrap-reboot.min";
+@import "libs/fonts.min";
+@import "libs/swiper-bundle.min";
 @import "base/variables";
 * {
   font-family: $museo-font-family, sans-serif;
@@ -26,5 +29,5 @@
 @import "blocks/reviews";
 @import "blocks/footer";
 @import "blocks/modal";
-
+@import "blocks/pageup";
 @import "media";

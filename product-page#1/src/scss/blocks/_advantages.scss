@@ -21,6 +21,14 @@
     align-items: center;
     max-width: 240px;
   }
+  &__icon {
+    &_animated {
+      animation-name: heartBeat;
+      animation-duration: 3s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+    }
+  }
   &__subtitle {
     font-weight: 700;
     font-size: 18px;

@@ -158,11 +158,12 @@
           <div class="calculating__subtitle">Ваш пол</div>
           <div class="calculating__choose" id="gender">
             <div
+              id="female"
               class="calculating__choose-item calculating__choose-item_active"
             >
               Женщина
             </div>
-            <div class="calculating__choose-item">Мужчина</div>
+            <div id="male" class="calculating__choose-item">Мужчина</div>
           </div>
 
           <div class="calculating__subtitle">Ваша конституция</div>
@@ -191,19 +192,20 @@
             Выберите вашу физическая активность
           </div>
           <div class="calculating__choose calculating__choose_big">
-            <div id="low" class="calculating__choose-item">
+            <div id="low" class="calculating__choose-item" data-ratio="1.2">
               Низкая активность
             </div>
             <div
               id="small"
               class="calculating__choose-item calculating__choose-item_active"
+              data-ratio="1.375"
             >
               Невысокая активность
             </div>
-            <div id="medium" class="calculating__choose-item">
+            <div id="medium" class="calculating__choose-item" data-ratio="1.55">
               Умеренная активность
             </div>
-            <div id="high" class="calculating__choose-item">
+            <div id="high" class="calculating__choose-item" data-ratio="1.725">
               Высокая активность
             </div>
           </div>

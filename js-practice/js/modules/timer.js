@@ -1,4 +1,4 @@
-function timer(id, deadline) {
+const timer = (id, deadline) => {
   //Timer
 
   const getTimeRemaining = (endtime) => {
@@ -59,6 +59,6 @@ function timer(id, deadline) {
   };
 
   setClock(id, deadline);
-}
+};
 
 export default timer;

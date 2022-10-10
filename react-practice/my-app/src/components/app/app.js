@@ -11,16 +11,19 @@ const App = () => {
       name: "John Smith",
       salary: 800,
       isPromotion: false,
+      id: 1,
     },
     {
       name: "Alex Marshal",
       salary: 3000,
       isPromotion: true,
+      id: 2,
     },
     {
       name: "Carl Teach",
       salary: 5000,
       isPromotion: false,
+      id: 3,
     },
   ];
 

@@ -6,9 +6,16 @@ class EmployeesListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isSalaryIncrease: false,
       isPromotion: false,
     };
   }
+
+  onSalaryIncrease = () => {
+    this.setState(({ isSalaryIncrease }) => ({
+      isSalaryIncrease: !isSalaryIncrease,
+    }));
+  };
 
   onPromotion = () => {
     this.setState(({ isPromotion }) => ({
@@ -18,15 +25,20 @@ class EmployeesListItem extends Component {
 
   render() {
     const { name, salary } = this.props;
-    const { isPromotion } = this.state;
+    const { isSalaryIncrease, isPromotion } = this.state;
     let employeeType = "list-group-item d-flex justify-content-between";
-    if (isPromotion) {
+    if (isSalaryIncrease) {
       employeeType += " increase";
+    }
+    if (isPromotion) {
+      employeeType += " like";
     }
 
     return (
       <li className={employeeType}>
-        <span className="list-group-item-label">{name}</span>
+        <span className="list-group-item-label" onClick={this.onPromotion}>
+          {name}
+        </span>
         <input
           type="text"
           className="list-group-item-input"
@@ -36,7 +48,7 @@ class EmployeesListItem extends Component {
           <button
             type="button"
             className="btn-cookie btn-sm"
-            onClick={this.onPromotion}
+            onClick={this.onSalaryIncrease}
           >
             <i className="fas fa-cookie"></i>
           </button>

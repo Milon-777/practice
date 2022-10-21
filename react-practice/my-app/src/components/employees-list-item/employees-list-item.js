@@ -11,20 +11,20 @@ class EmployeesListItem extends Component {
     };
   }
 
-  onSalaryIncrease = () => {
+  handleEmployeeSalary = () => {
     this.setState(({ isSalaryIncrease }) => ({
       isSalaryIncrease: !isSalaryIncrease,
     }));
   };
 
-  onPromotion = () => {
+  handleEmployeePromotion = () => {
     this.setState(({ isPromotion }) => ({
       isPromotion: !isPromotion,
     }));
   };
 
   render() {
-    const { name, salary } = this.props;
+    const { name, salary, handleEmployeeDelete } = this.props;
     const { isSalaryIncrease, isPromotion } = this.state;
     let employeeType = "list-group-item d-flex justify-content-between";
     if (isSalaryIncrease) {
@@ -36,7 +36,10 @@ class EmployeesListItem extends Component {
 
     return (
       <li className={employeeType}>
-        <span className="list-group-item-label" onClick={this.onPromotion}>
+        <span
+          className="list-group-item-label"
+          onClick={this.handleEmployeePromotion}
+        >
           {name}
         </span>
         <input
@@ -48,12 +51,16 @@ class EmployeesListItem extends Component {
           <button
             type="button"
             className="btn-cookie btn-sm"
-            onClick={this.onSalaryIncrease}
+            onClick={this.handleEmployeeSalary}
           >
             <i className="fas fa-cookie"></i>
           </button>
 
-          <button type="button" className="btn-trash btn-sm">
+          <button
+            type="button"
+            className="btn-trash btn-sm"
+            onClick={handleEmployeeDelete}
+          >
             <i className="fas fa-trash"></i>
           </button>
           <i className="fas fa-star"></i>

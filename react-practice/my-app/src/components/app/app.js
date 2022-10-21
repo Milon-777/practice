@@ -33,12 +33,27 @@ class App extends Component {
         },
       ],
     };
+    this.maxId = 4;
   }
 
   deleteEmployee = (id) => {
     this.setState(({ data }) => {
       return {
         data: data.filter((item) => item.id !== id),
+      };
+    });
+  };
+
+  addEmployee = (name, salary) => {
+    const newEmployee = {
+      name: name,
+      salary: salary,
+      isSalaryIncrease: false,
+      id: this.maxId++,
+    };
+    this.setState(({ data }) => {
+      return {
+        data: [...data, newEmployee],
       };
     });
   };
@@ -57,7 +72,7 @@ class App extends Component {
           data={this.state.data}
           deleteEmployee={this.deleteEmployee}
         />
-        <EmployeesAddForm />
+        <EmployeesAddForm addEmployee={this.addEmployee} />
       </div>
     );
   }

@@ -17,18 +17,21 @@ class App extends Component {
           name: "John Smith",
           salary: 800,
           isSalaryIncrease: false,
+          isPromotion: true,
           id: 1,
         },
         {
           name: "Alex Marshal",
           salary: 3000,
           isSalaryIncrease: true,
+          isPromotion: false,
           id: 2,
         },
         {
           name: "Carl Teach",
           salary: 5000,
           isSalaryIncrease: false,
+          isPromotion: false,
           id: 3,
         },
       ],
@@ -45,10 +48,18 @@ class App extends Component {
   };
 
   addEmployee = (name, salary) => {
+    if (name.length < 3) {
+      alert("Please, enter a valid name!");
+      return;
+    } else if (salary < 1 || !isFinite(salary)) {
+      alert("Please, enter a valid salary!");
+      return;
+    }
     const newEmployee = {
       name: name,
       salary: salary,
       isSalaryIncrease: false,
+      isPromotion: false,
       id: this.maxId++,
     };
     this.setState(({ data }) => {
@@ -58,10 +69,29 @@ class App extends Component {
     });
   };
 
+  handleChangeProperty = (id, property) => {
+    this.setState(({ data }) => ({
+      data: data.map((element) => {
+        if (element.id === id) {
+          return { ...element, [property]: !element[property] };
+        }
+        return element;
+      }),
+    }));
+  };
+
   render() {
+    const totalEmployees = this.state.data.length;
+    const employeesWithSalaryIncrease = this.state.data.filter(
+      (element) => element.isSalaryIncrease === true
+    ).length;
+
     return (
       <div className="app">
-        <AppInfo />
+        <AppInfo
+          totalEmployees={totalEmployees}
+          employeesWithSalaryIncrease={employeesWithSalaryIncrease}
+        />
 
         <div className="search-panel">
           <SearchPanel />
@@ -71,6 +101,7 @@ class App extends Component {
         <EmployeesList
           data={this.state.data}
           deleteEmployee={this.deleteEmployee}
+          handleChangeProperty={this.handleChangeProperty}
         />
         <EmployeesAddForm addEmployee={this.addEmployee} />
       </div>

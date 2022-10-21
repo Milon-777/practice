@@ -1,7 +1,12 @@
 import EmployeesListItem from "../employees-list-item/employees-list-item";
 import "./employees-list.css";
 
-const EmployeesList = ({ data, deleteEmployee, handleChangeProperty }) => {
+const EmployeesList = ({
+  data,
+  deleteEmployee,
+  handleChangeProperty,
+  handleSalaryChange,
+}) => {
   const employees = data.map((item) => {
     const { id, ...itemProps } = item;
     return (
@@ -11,6 +16,9 @@ const EmployeesList = ({ data, deleteEmployee, handleChangeProperty }) => {
         deleteEmployee={() => deleteEmployee(id)}
         handleChangeProperty={(e) =>
           handleChangeProperty(id, e.currentTarget.getAttribute("data-toggle"))
+        }
+        handleSalaryChange={(e) =>
+          handleSalaryChange(id, e.currentTarget.value)
         }
       />
     );

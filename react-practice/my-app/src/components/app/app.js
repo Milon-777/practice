@@ -35,6 +35,8 @@ class App extends Component {
           id: 3,
         },
       ],
+      searchText: "",
+      filter: "all",
     };
     this.maxId = 4;
   }
@@ -80,11 +82,56 @@ class App extends Component {
     }));
   };
 
+  handleSalaryChange = (id, newSalary) => {
+    this.setState(({ data }) => ({
+      data: data.map((element) => {
+        if (element.id === id) {
+          return { ...element, salary: newSalary };
+        }
+        return element;
+      }),
+    }));
+  };
+
+  searchEmployee = (elements, searchText) => {
+    if (searchText.length === 0) {
+      return elements;
+    }
+
+    return elements.filter((element) => {
+      return element.name.indexOf(searchText) > -1;
+    });
+  };
+
+  handleSearchUpdate = (searchText) => {
+    this.setState({ searchText });
+  };
+
+  handleFilterUpdate = (elements, filter) => {
+    switch (filter) {
+      case "promotion":
+        return elements.filter((element) => element.isPromotion);
+      case "largeSalary":
+        return elements.filter((element) => element.salary > 1000);
+      default:
+        return elements;
+    }
+  };
+
+  handleFilterSelection = (filter) => {
+    this.setState({ filter });
+  };
+
   render() {
-    const totalEmployees = this.state.data.length;
-    const employeesWithSalaryIncrease = this.state.data.filter(
+    const { data, searchText, filter } = this.state;
+    const totalEmployees = data.length;
+    const employeesWithSalaryIncrease = data.filter(
       (element) => element.isSalaryIncrease === true
     ).length;
+    const visibleEmployees = this.handleFilterUpdate(
+      this.searchEmployee(data, searchText),
+      filter
+    );
 
     return (
       <div className="app">
@@ -94,14 +141,18 @@ class App extends Component {
         />
 
         <div className="search-panel">
-          <SearchPanel />
-          <AppFilter />
+          <SearchPanel handleSearchUpdate={this.handleSearchUpdate} />
+          <AppFilter
+            filter={filter}
+            handleFilterSelection={this.handleFilterSelection}
+          />
         </div>
 
         <EmployeesList
-          data={this.state.data}
+          data={visibleEmployees}
           deleteEmployee={this.deleteEmployee}
           handleChangeProperty={this.handleChangeProperty}
+          handleSalaryChange={this.handleSalaryChange}
         />
         <EmployeesAddForm addEmployee={this.addEmployee} />
       </div>

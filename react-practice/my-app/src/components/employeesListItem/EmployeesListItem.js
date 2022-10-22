@@ -1,4 +1,4 @@
-import "./employees-list-item.css";
+import "./EmployeesListItem.css";
 
 const EmployeesListItem = (props) => {
   const {

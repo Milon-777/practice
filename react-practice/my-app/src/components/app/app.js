@@ -1,12 +1,12 @@
 import { Component } from "react";
 
-import AppInfo from "../app-info/app-info";
-import SearchPanel from "../search-panel/search-panel";
-import AppFilter from "../app-filter/app-filter";
-import EmployeesList from "../employees-list/employees-list";
-import EmployeesAddForm from "../employees-add-form/employees-add-form";
+import AppInfo from "../appInfo/AppInfo";
+import SearchPanel from "../searchPanel/SearchPanel";
+import AppFilter from "../appFilter/AppFilter";
+import EmployeesList from "../employeesList/EmployeesList";
+import EmployeesAddForm from "../employeesAddForm/EmployeesAddForm";
 
-import "./app.css";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {

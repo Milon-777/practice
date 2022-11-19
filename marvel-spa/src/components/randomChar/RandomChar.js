@@ -22,7 +22,11 @@ class RandomChar extends Component {
 
   marvelService = new MarvelService();
 
-  handleChatLoaded = (character) => {
+  componentDidMount = () => {
+    this.updateCharacter();
+  };
+
+  handleCharacterLoaded = (character) => {
     this.setState({ character, isLoading: false });
   };
 
@@ -35,9 +39,10 @@ class RandomChar extends Component {
 
   updateCharacter = () => {
     const id = Math.floor(Math.random() * (1010789 - 1009146) + 1009146);
+    this.updateCharacter();
     this.marvelService
       .getCharacter(id)
-      .then(this.handleChatLoaded)
+      .then(this.handleCharacterLoaded)
       .catch(this.handleError);
   };
 
@@ -61,7 +66,10 @@ class RandomChar extends Component {
             Do you want to get to know him better?
           </p>
           <p className="randomchar__title">Or choose another one</p>
-          <button className="button button__main">
+          <button
+            onClick={this.updateCharacter}
+            className="button button__main"
+          >
             <div className="inner">try it</div>
           </button>
           <img src={mjolnir} alt="mjolnir" className="randomchar__decoration" />
@@ -73,10 +81,22 @@ class RandomChar extends Component {
 
 const View = ({ character }) => {
   const { name, description, thumbnail, homepage, wiki } = character;
+  let imageStyle = { objectFit: "cover" };
+  if (
+    thumbnail ===
+    "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+  ) {
+    imageStyle = { objectFit: "containt" };
+  }
 
   return (
     <div className="randomchar__block">
-      <img src={thumbnail} alt="Random character" className="randomchar__img" />
+      <img
+        src={thumbnail}
+        alt="Random character"
+        className="randomchar__img"
+        style={imageStyle}
+      />
       <div className="randomchar__info">
         <p className="randomchar__name">{name}</p>
         <p className="randomchar__descr">{description}</p>

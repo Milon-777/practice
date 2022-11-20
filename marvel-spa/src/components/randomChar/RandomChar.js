@@ -9,11 +9,6 @@ import thor from "../../resources/img/thor.jpeg";
 import mjolnir from "../../resources/img/mjolnir.png";
 
 class RandomChar extends Component {
-  constructor(props) {
-    super(props);
-    this.updateCharacter();
-  }
-
   state = {
     character: {},
     isLoading: true,
@@ -30,6 +25,10 @@ class RandomChar extends Component {
     this.setState({ character, isLoading: false });
   };
 
+  handleCharacterLoading = () => {
+    this.setState({ isLoading: true, isError: false });
+  };
+
   handleError = () => {
     this.setState({
       isLoading: false,
@@ -39,7 +38,7 @@ class RandomChar extends Component {
 
   updateCharacter = () => {
     const id = Math.floor(Math.random() * (1010789 - 1009146) + 1009146);
-    this.updateCharacter();
+    this.handleCharacterLoading();
     this.marvelService
       .getCharacter(id)
       .then(this.handleCharacterLoaded)
@@ -86,7 +85,7 @@ const View = ({ character }) => {
     thumbnail ===
     "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
   ) {
-    imageStyle = { objectFit: "containt" };
+    imageStyle = { objectFit: "contain" };
   }
 
   return (

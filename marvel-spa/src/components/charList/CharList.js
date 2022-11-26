@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
@@ -115,5 +116,9 @@ class CharList extends Component {
     );
   }
 }
+
+CharList.propTypes = {
+  handleCharacterSelection: PropTypes.func.isRequired,
+};
 
 export default CharList;

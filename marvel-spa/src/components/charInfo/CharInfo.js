@@ -12,7 +12,7 @@ class CharInfo extends Component {
   state = {
     character: null,
     isLoading: false,
-    isError: false,
+    hasError: false,
   };
 
   marvelService = new MarvelService();
@@ -25,6 +25,10 @@ class CharInfo extends Component {
     if (this.props.characterId !== prevProps.characterId) {
       this.updateCharacter();
     }
+  };
+
+  componentDidCatch = () => {
+    this.setState({ hasError: true });
   };
 
   updateCharacter = () => {
@@ -45,23 +49,23 @@ class CharInfo extends Component {
   };
 
   handleCharacterLoading = () => {
-    this.setState({ isLoading: true, isError: false });
+    this.setState({ isLoading: true, hasError: false });
   };
 
   handleError = () => {
     this.setState({
       isLoading: false,
-      isError: true,
+      hasError: true,
     });
   };
 
   render() {
-    const { character, isLoading, isError } = this.state;
+    const { character, isLoading, hasError } = this.state;
 
-    const skeleton = character || isLoading || isError ? null : <Skeleton />;
-    const errorMessage = isError ? <ErrorMessage /> : null;
+    const skeleton = character || isLoading || hasError ? null : <Skeleton />;
+    const errorMessage = hasError ? <ErrorMessage /> : null;
     const spinner = isLoading ? <Spinner /> : null;
-    const content = !(isLoading || isError || !character) ? (
+    const content = !(isLoading || hasError || !character) ? (
       <View character={character} />
     ) : null;
 

@@ -12,7 +12,7 @@ class RandomChar extends Component {
   state = {
     character: {},
     isLoading: true,
-    isError: false,
+    hasError: false,
   };
 
   marvelService = new MarvelService();
@@ -26,13 +26,13 @@ class RandomChar extends Component {
   };
 
   handleCharacterLoading = () => {
-    this.setState({ isLoading: true, isError: false });
+    this.setState({ isLoading: true, hasError: false });
   };
 
   handleError = () => {
     this.setState({
       isLoading: false,
-      isError: true,
+      hasError: true,
     });
   };
 
@@ -46,10 +46,10 @@ class RandomChar extends Component {
   };
 
   render() {
-    const { character, isLoading, isError } = this.state;
-    const errorMessage = isError ? <ErrorMessage /> : null;
+    const { character, isLoading, hasError } = this.state;
+    const errorMessage = hasError ? <ErrorMessage /> : null;
     const spinner = isLoading ? <Spinner /> : null;
-    const content = !(isLoading || isError) ? (
+    const content = !(isLoading || hasError) ? (
       <View character={character} />
     ) : null;
 

@@ -11,7 +11,7 @@ class CharList extends Component {
   state = {
     characterList: [],
     isLoading: true,
-    isError: false,
+    hasError: false,
   };
 
   marvelService = new MarvelService();
@@ -30,7 +30,7 @@ class CharList extends Component {
   handleError = () => {
     this.setState({
       isLoading: false,
-      isError: true,
+      hasError: true,
     });
   };
 
@@ -60,13 +60,13 @@ class CharList extends Component {
   }
 
   render() {
-    const { characterList, isLoading, isError } = this.state;
+    const { characterList, isLoading, hasError } = this.state;
 
     const items = this.renderItems(characterList);
 
-    const errorMessage = isError ? <ErrorMessage /> : null;
+    const errorMessage = hasError ? <ErrorMessage /> : null;
     const spinner = isLoading ? <Spinner /> : null;
-    const content = !(isLoading || isError) ? items : null;
+    const content = !(isLoading || hasError) ? items : null;
 
     return (
       <div className="char__list">

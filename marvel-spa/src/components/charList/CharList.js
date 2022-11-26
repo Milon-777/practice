@@ -5,26 +5,50 @@ import ErrorMessage from "../errorMessage/ErrorMessage";
 import MarvelService from "../../services/MarvelService";
 
 import "./charList.scss";
-import abyss from "../../resources/img/abyss.jpg";
 
 class CharList extends Component {
   state = {
     characterList: [],
     isLoading: true,
     hasError: false,
+    isLoadingCharacters: false,
+    offset: 210,
+    hasAnotherCharacters: true,
   };
 
   marvelService = new MarvelService();
 
   componentDidMount = () => {
+    this.handleRequestCharacters();
+  };
+
+  handleRequestCharacters = (offset) => {
+    this.handleCharacterListLoading();
     this.marvelService
-      .getAllCharacters()
+      .getAllCharacters(offset)
       .then(this.handleCharacterListLoaded)
       .catch(this.handleError);
   };
 
-  handleCharacterListLoaded = (characterList) => {
-    this.setState({ characterList, isLoading: false });
+  handleCharacterListLoading = () => {
+    this.setState({
+      isLoadingCharacters: true,
+    });
+  };
+
+  handleCharacterListLoaded = (newCharacterList) => {
+    let hasAnotherCharacters = true;
+    if (newCharacterList.length < 9) {
+      hasAnotherCharacters = false;
+    }
+
+    this.setState(({ offset, characterList }) => ({
+      characterList: [...characterList, ...newCharacterList],
+      isLoading: false,
+      isLoadingCharacters: false,
+      offset: offset + 9,
+      hasAnotherCharacters: hasAnotherCharacters,
+    }));
   };
 
   handleError = () => {
@@ -43,7 +67,6 @@ class CharList extends Component {
       ) {
         imageStyle = { objectFit: "unset" };
       }
-
       return (
         <li
           className="char__item"
@@ -60,7 +83,14 @@ class CharList extends Component {
   }
 
   render() {
-    const { characterList, isLoading, hasError } = this.state;
+    const {
+      characterList,
+      isLoading,
+      hasError,
+      offset,
+      isLoadingCharacters,
+      hasAnotherCharacters,
+    } = this.state;
 
     const items = this.renderItems(characterList);
 
@@ -73,7 +103,12 @@ class CharList extends Component {
         {errorMessage}
         {spinner}
         {content}
-        <button className="button button__main button__long">
+        <button
+          className="button button__main button__long"
+          disabled={isLoadingCharacters}
+          onClick={() => this.handleRequestCharacters(offset)}
+          style={{ display: hasAnotherCharacters ? "block" : "none" }}
+        >
           <div className="inner">load more</div>
         </button>
       </div>

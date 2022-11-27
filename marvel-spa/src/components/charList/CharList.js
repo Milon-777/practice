@@ -16,11 +16,24 @@ class CharList extends Component {
     offset: 210,
     hasAnotherCharacters: true,
   };
+  itemRefs = [];
 
   marvelService = new MarvelService();
 
   componentDidMount = () => {
     this.handleRequestCharacters();
+  };
+
+  setRef = (ref) => {
+    this.itemRefs.push(ref);
+  };
+
+  focusSelectedCharacter = (id) => {
+    this.itemRefs.forEach((item) =>
+      item.classList.remove("char__item_selected")
+    );
+    this.itemRefs[id].classList.add("char__item_selected");
+    this.itemRefs[id].focus();
   };
 
   handleRequestCharacters = (offset) => {
@@ -60,7 +73,7 @@ class CharList extends Component {
   };
 
   renderItems(array) {
-    const items = array.map((item) => {
+    const items = array.map((item, i) => {
       let imageStyle = { objectFit: "cover" };
       if (
         item.thumbnail ===
@@ -71,8 +84,19 @@ class CharList extends Component {
       return (
         <li
           className="char__item"
+          tabIndex={0}
           key={item.id}
-          onClick={() => this.props.handleCharacterSelection(item.id)}
+          ref={this.setRef}
+          onClick={() => {
+            this.props.handleCharacterSelection(item.id);
+            this.focusSelectedCharacter(i);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === "" || event.key === "Enter") {
+              this.props.handleCharacterSelection(item.id);
+              this.focusSelectedCharacter(i);
+            }
+          }}
         >
           <img src={item.thumbnail} alt={item.name} style={imageStyle} />
           <div className="char__name">{item.name}</div>

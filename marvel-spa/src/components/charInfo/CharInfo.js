@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import MarvelService from "../../services/MarvelService";
@@ -8,77 +8,60 @@ import Skeleton from "../skeleton/Skeleton";
 
 import "./charInfo.scss";
 
-class CharInfo extends Component {
-  state = {
-    character: null,
-    isLoading: false,
-    hasError: false,
-  };
+const CharInfo = (props) => {
+  const [character, setCharacter] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const marvelService = new MarvelService();
 
-  marvelService = new MarvelService();
+  useEffect(() => {
+    updateCharacter();
+  }, [props.characterId]);
 
-  componentDidMount = () => {
-    this.updateCharacter();
-  };
-
-  componentDidUpdate = (prevProps) => {
-    if (this.props.characterId !== prevProps.characterId) {
-      this.updateCharacter();
-    }
-  };
-
-  componentDidCatch = () => {
-    this.setState({ hasError: true });
-  };
-
-  updateCharacter = () => {
-    const { characterId } = this.props;
+  const updateCharacter = () => {
+    const { characterId } = props;
     if (!characterId) {
       return;
     }
 
-    this.handleCharacterLoading();
-    this.marvelService
+    handleCharacterLoading();
+    marvelService
       .getCharacter(characterId)
-      .then(this.handleCharacterLoaded)
-      .catch(this.handleError);
+      .then(handleCharacterLoaded)
+      .catch(handleError);
   };
 
-  handleCharacterLoaded = (character) => {
-    this.setState({ character, isLoading: false });
+  const handleCharacterLoaded = (character) => {
+    setCharacter(character);
+    setIsLoading(false);
   };
 
-  handleCharacterLoading = () => {
-    this.setState({ isLoading: true, hasError: false });
+  const handleCharacterLoading = () => {
+    setIsLoading(true);
+    setHasError(true);
   };
 
-  handleError = () => {
-    this.setState({
-      isLoading: false,
-      hasError: true,
-    });
+  const handleError = () => {
+    setIsLoading(false);
+    setHasError(true);
   };
 
-  render() {
-    const { character, isLoading, hasError } = this.state;
+  const skeleton = character || isLoading || hasError ? null : <Skeleton />;
+  const errorMessage = hasError ? <ErrorMessage /> : null;
+  const spinner = isLoading ? <Spinner /> : null;
+  const content = !(isLoading || hasError || !character) ? (
+    <View character={character} />
+  ) : null;
 
-    const skeleton = character || isLoading || hasError ? null : <Skeleton />;
-    const errorMessage = hasError ? <ErrorMessage /> : null;
-    const spinner = isLoading ? <Spinner /> : null;
-    const content = !(isLoading || hasError || !character) ? (
-      <View character={character} />
-    ) : null;
-
-    return (
-      <div className="char__info">
-        {skeleton}
-        {errorMessage}
-        {spinner}
-        {content}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="char__info">
+      {skeleton}
+      {errorMessage}
+      {spinner}
+      {content}
+    </div>
+  );
+};
 
 const View = ({ character }) => {
   const { name, description, thumbnail, homepage, wiki, comics } = character;

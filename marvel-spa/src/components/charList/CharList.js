@@ -3,22 +3,20 @@ import PropTypes from "prop-types";
 
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
-import MarvelService from "../../services/MarvelService";
+import useMarvelService from "../../services/MarvelService";
 
 import "./charList.scss";
 
 const CharList = (props) => {
   const [characterList, setCharacterList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
   const [isLoadingCharacters, setIsLoadingCharacters] = useState(false);
   const [hasAnotherCharacters, setHasAnotherCharacters] = useState(true);
   const [offset, setOffset] = useState(210);
   const itemRefs = useRef([]);
-  const marvelService = new MarvelService();
+  const { loading, error, getAllCharacters } = useMarvelService();
 
   useEffect(() => {
-    handleRequestCharacters();
+    handleRequestCharacters(offset, true);
   }, []);
 
   const focusSelectedCharacter = (id) => {
@@ -29,16 +27,9 @@ const CharList = (props) => {
     itemRefs.current[id].focus();
   };
 
-  const handleRequestCharacters = (offset) => {
-    handleCharacterListLoading();
-    marvelService
-      .getAllCharacters(offset)
-      .then(handleCharacterListLoaded)
-      .catch(handleError);
-  };
-
-  const handleCharacterListLoading = () => {
-    setIsLoadingCharacters(true);
+  const handleRequestCharacters = (offset, initial) => {
+    initial ? setIsLoadingCharacters(false) : setIsLoadingCharacters(true);
+    getAllCharacters(offset).then(handleCharacterListLoaded);
   };
 
   const handleCharacterListLoaded = (newCharacterList) => {
@@ -51,15 +42,9 @@ const CharList = (props) => {
       ...characterList,
       ...newCharacterList,
     ]);
-    setIsLoading(false);
     setIsLoadingCharacters(false);
     setHasAnotherCharacters(hasCharacters);
     setOffset((offset) => offset + 9);
-  };
-
-  const handleError = () => {
-    setIsLoading(false);
-    setHasError(true);
   };
 
   const renderItems = (array) => {
@@ -98,15 +83,14 @@ const CharList = (props) => {
   };
 
   const items = renderItems(characterList);
-  const errorMessage = hasError ? <ErrorMessage /> : null;
-  const spinner = isLoading ? <Spinner /> : null;
-  const content = !(isLoading || hasError) ? items : null;
+  const errorMessage = error ? <ErrorMessage /> : null;
+  const spinner = loading && !isLoadingCharacters ? <Spinner /> : null;
 
   return (
     <div className="char__list">
       {errorMessage}
       {spinner}
-      {content}
+      {items}
       <button
         className="button button__main button__long"
         disabled={isLoadingCharacters}

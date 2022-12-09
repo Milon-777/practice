@@ -47,6 +47,8 @@ const CharList = (props) => {
     setOffset((offset) => offset + 9);
   };
 
+  console.log("render");
+
   const renderItems = (array) => {
     const items = array.map((item, i) => {
       let imageStyle = { objectFit: "cover" };

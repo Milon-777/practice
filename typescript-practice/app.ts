@@ -25,7 +25,7 @@ const user = {
 console.log(getFullName(user));
 
 let info: {
-  officeId: number;
+  officeId: string;
   isOpened: boolean;
   contacts: {
     phone: string;

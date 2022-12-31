@@ -5,7 +5,19 @@ let c = "sdt";
 let d = true;
 let res = revenue + bonus;
 console.log(res);
-function getFullName(firstname, surname) {
-    return `${firstname} ${surname}`;
+function getFullName(user) {
+    return `${user.firstname} ${user.surname}`;
 }
-console.log(getFullName(`Roman`, `Strizhak`));
+const user = {
+    firstname: "Roman",
+    surname: "Strizhak",
+    country: "Ukraine",
+    age: 21,
+    skills: {
+        js: true,
+        html: true,
+        css: true,
+    },
+};
+console.log(getFullName(user));
+let info;

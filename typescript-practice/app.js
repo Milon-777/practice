@@ -24,3 +24,4 @@ let info;
 console.log("almost)");
 console.log("almost there)");
 console.log("congratulations");
+console.log("and");

@@ -22,3 +22,4 @@ const user = {
 console.log(getFullName(user));
 let info;
 console.log("almost)");
+console.log("almost there)");

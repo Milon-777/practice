@@ -21,8 +21,24 @@ const user = {
 };
 console.log(getFullName(user));
 let info;
-console.log("almost)");
-console.log("almost there)");
-console.log("congratulations");
-console.log("and");
-console.log("celebrations)");
+const skills = [1, "Developer"];
+const arr = [1, "text", true, false, true];
+var StatusCode;
+(function (StatusCode) {
+    StatusCode[StatusCode["SUCCESS"] = 1] = "SUCCESS";
+    StatusCode[StatusCode["IN_PROCESS"] = 2] = "IN_PROCESS";
+    StatusCode[StatusCode["FAILED"] = 3] = "FAILED";
+})(StatusCode || (StatusCode = {}));
+const obj1 = {
+    message: "Payment successful",
+    statusCode: StatusCode.SUCCESS,
+};
+function action(status) {
+    console.log(status);
+}
+action(obj1.statusCode);
+action(2);
+function compute() {
+    return 3;
+}
+console.log(2 /* Roles.USER */);

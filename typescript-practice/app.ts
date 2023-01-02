@@ -36,8 +36,35 @@ let info: {
   };
 };
 
-console.log("almost)");
-console.log("almost there)");
-console.log("congratulations");
-console.log("and");
-console.log("celebrations)");
+const skills: readonly [number, string] = [1, "Developer"];
+
+const arr: [number, string, ...boolean[]] = [1, "text", true, false, true];
+
+enum StatusCode {
+  SUCCESS = 1,
+  IN_PROCESS,
+  FAILED,
+}
+
+const obj1 = {
+  message: "Payment successful",
+  statusCode: StatusCode.SUCCESS,
+};
+
+function action(status: StatusCode) {
+  console.log(status);
+}
+
+action(obj1.statusCode);
+action(2);
+
+function compute() {
+  return 3;
+}
+
+const enum Roles {
+  ADMIN = 1,
+  USER = 2,
+}
+
+console.log(Roles.USER);

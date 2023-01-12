@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strizhak</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div><canvas id="chart" style="width: 90%"></canvas></div>
+    <div>
+      <canvas id="chart2" style="width: 90%; margin-top: 30px"></canvas>
+    </div>
+    <div>
+      <canvas
+        id="linearModelChart"
+        style="width: 90%; margin-top: 30px"
+      ></canvas>
+    </div>
+    <div>
+      <canvas
+        id="exponentialModelChart"
+        style="width: 90%; margin-top: 30px"
+      ></canvas>
+    </div>
+    <div>
+      <canvas
+        id="logarithmicModelChart"
+        style="width: 90%; margin-top: 30px"
+      ></canvas>
+    </div>
+    <div>
+      <canvas
+        id="powerModelChart"
+        style="width: 90%; margin-top: 30px"
+      ></canvas>
+    </div>
+    <div>
+      <canvas
+        id="polynomialModelChart"
+        style="width: 90%; margin-top: 30px"
+      ></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/regression/2.0.1/regression.min.js"
+      integrity="sha512-0k6FXllQktdobw8Nc8KQN2WtZrOuxpMn7jC2RKCF6LR7EdOhhrg3H5cBPxhs3CFzQVlO6ni1B9SDLUPhBs0Alg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="timeSeries.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

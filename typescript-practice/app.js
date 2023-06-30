@@ -1,14 +1,13 @@
-"use strict";
-let revenue = 1000;
-let bonus = 500;
-let c = "sdt";
-let d = true;
-let res = revenue + bonus;
+var revenue = 1000;
+var bonus = 500;
+var c = "sdt";
+var d = true;
+var res = revenue + bonus;
 console.log(res);
 function getFullName(user) {
-    return `${user.firstname} ${user.surname}`;
+    return "".concat(user.firstname, " ").concat(user.surname);
 }
-const user = {
+var user = {
     firstname: "Roman",
     surname: "Strizhak",
     country: "Ukraine",
@@ -16,22 +15,22 @@ const user = {
     skills: {
         js: true,
         html: true,
-        css: true,
-    },
+        css: true
+    }
 };
 console.log(getFullName(user));
-let info;
-const skills = [1, "Developer"];
-const arr = [1, "text", true, false, true];
+var info;
+var skills = [1, "Developer"];
+var arr = [1, "text", true, false, true];
 var StatusCode;
 (function (StatusCode) {
     StatusCode[StatusCode["SUCCESS"] = 1] = "SUCCESS";
     StatusCode[StatusCode["IN_PROCESS"] = 2] = "IN_PROCESS";
     StatusCode[StatusCode["FAILED"] = 3] = "FAILED";
 })(StatusCode || (StatusCode = {}));
-const obj1 = {
+var obj1 = {
     message: "Payment successful",
-    statusCode: StatusCode.SUCCESS,
+    statusCode: StatusCode.SUCCESS
 };
 function action(status) {
     console.log(status);
@@ -42,3 +41,4 @@ function compute() {
     return 3;
 }
 console.log(2 /* Roles.USER */);
+var aaa = 15;

@@ -1,5 +1,17 @@
 {
   "dependencies": {
     "typescript": "^4.9.4"
+  },
+  "name": "typescript-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roman Strizhak",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "reflect-metadata": "^0.1.13"
   }
 }

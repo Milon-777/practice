@@ -1,0 +1,10 @@
+.title,
+.timer {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
